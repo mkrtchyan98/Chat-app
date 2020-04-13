@@ -17,6 +17,9 @@ const styles = makeStyles ({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  position:'fixed',
+  width:'100%',
+  height:'100%',
   '& textarea ': {
   color:'#fff',
   background:'#333',
@@ -30,6 +33,18 @@ const styles = makeStyles ({
   '& button': {
     margin:'2px'
   },
+  '& div.chats': {
+    height:'100%',
+    width:'100%',
+    overflow:'hidden scroll'
+  },
+  '& div.container':{
+    display:'flex',
+    width:'50%',
+    height:'100%',
+    flexDirection:'column',
+    justifyContent:'space-between'
+  },
   '& div.settingBrightness': {
     position:'absolute',
     top:0,
@@ -40,6 +55,11 @@ const styles = makeStyles ({
 position: 'relative',
 right: '90px',
   },
+    '& div p.chats_time':{
+    opacity: 0.7,
+    fontSize:'13px'
+  },
+  
   '& div span.MuiSwitch-track':{
     backgroundColor:'white'
   }
@@ -121,17 +141,6 @@ async function logOut() {
 
  return (
     <div className={classes.root} style={color}>
-      <div className="chats">
-      {readError ? <p>{readError}</p> : null }
-        {chats.map(chat => {
-          return <React.Fragment>
-          <p key ={user.displayName} className="userName"> {chat.displayName}</p>
-          <p key={chat.uid}>{chat.content}</p>
-          <p key ={chat.timestamp}>{moment.utc(chat.timestamp).format()} </p>
-
-          </React.Fragment>
-        })}
-      </div>
        <div className="settingBrightness">
        <FormControlLabel
         control={
@@ -145,6 +154,18 @@ async function logOut() {
         label="Change Mode"
       />
        </div>
+       <div className="container">
+       <div className="chats">
+      {readError ? <p>{readError}</p> : null }
+        {chats.map(chat => {
+          return   <div className="chat_nodes">
+          <p key ={user.displayName} className="userName"> {chat.displayName}</p>
+          <p key={chat.uid}>{chat.content}</p>
+          <p key ={chat.timestamp} className="chats_time">{moment.utc(chat.timestamp).fromNow()} </p>
+          </div>
+        })}
+        </div>
+       
       <form onSubmit={handleSubmit}>
         <textarea onChange={(e)=>setContent(e.target.value)} value={content} ></textarea>
         {writeError ? <p>{writeError}</p> : null}
@@ -167,6 +188,7 @@ async function logOut() {
       <div>
         Login in as: <strong>{user.email}</strong>
       </div>
+    </div>
     </div>
   );
 }
