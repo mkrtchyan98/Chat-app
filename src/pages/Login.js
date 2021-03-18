@@ -82,10 +82,7 @@ const Login = () => {
   const classes = styles();
 	    return (
       <div className={classes.root}>
-        <form
-          autoComplete="off"
-          onSubmit={handleSubmit}
-        >
+     
           <h1>
             Login to
             <Button variant="contained" color="primary">
@@ -98,30 +95,7 @@ const Login = () => {
             Fill in the form below to login to your account.
           </p>
           <div>
-            <input
-              placeholder="Email"
-              name="email"
-              type="email"
-              onChange={(e)=>setEmail(e.target.value)}
-              value={email}
-
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Password"
-              name="password"
-              onChange={(e)=>setPassword(e.target.value)}
-              value={password}
-              type="password"
-            />
-          </div>
-          <div>
-            {error ? (
-              <p style={{color:'red'}}>{error}</p>
-            ) : null}
-                        <Button variant="contained" color="secondary" type="submit">Login</Button>
-             <p>You can also log in with any of these services</p>
+             <p>Log in with any of these services</p>
                 <Button variant="contained" color="secondary"  onClick={googleSignIn}>
             Sign in with Google
           </Button>
@@ -133,7 +107,6 @@ const Login = () => {
           <p>
             Don't have an account? <Link to="/signup">Sign up</Link>
           </p>
-        </form>
       </div>
     );
     }
