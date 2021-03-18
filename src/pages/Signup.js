@@ -75,31 +75,11 @@ const styles = makeStyles({
 	const classes = styles();
 			return (
 		<div className={classes.root}>
-		<form onSubmit={handleSubmit}>
 		<h1>
 		  <Button variant="contained" color="primary">
 		<Link to='/'>Chatonne</Link>
 		</Button>
 		</h1>
-		<p>Fill in the form below to create an account. </p>
-		<div>
-		<input 
-		 placeholder="Email"
-		 name="email"
-		  type="email" 
-		  onChange={ (e) => setEmail(e.target.value)} 
-		  value={email} />
-
-		  <input
-		   placeholder="password"
-		    name="password"
-		     type="password" 
-		     onChange={ (e) => setPassword(e.target.value)} 
-		     value={password} /> 
-		</div>
-		{ error ? <p>{error}</p> : null}
-		 <Button variant="contained" color="secondary">Sign up </Button>
-		<p>Or</p>
 		<div className="signUp">
  <Button variant="contained" color="secondary" onClick={googleSignIn}>
   Sign up with Google
@@ -110,7 +90,6 @@ const styles = makeStyles({
 		</div>
 		<hr></hr>
 		<p>Already have an account <Link to ="/Login">Login</Link></p>
-		</form>
 		</div>
 		)
 }
