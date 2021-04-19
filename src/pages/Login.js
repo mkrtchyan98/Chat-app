@@ -47,8 +47,6 @@ const styles = makeStyles({
 
 
 const Login = () => {
-	const [email,setEmail] = useState('');
-	const [password,setPassword] = useState('');
 	const [error,setError] = useState(null)
 	
 
@@ -91,9 +89,7 @@ const Login = () => {
             </Link>
             </Button>
           </h1>
-          <p>
-            Fill in the form below to login to your account.
-          </p>
+        
           <div>
              <p>Log in with any of these services</p>
                 <Button variant="contained" color="secondary"  onClick={googleSignIn}>
